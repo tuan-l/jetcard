@@ -13,7 +13,7 @@ class Heartbeat(Configurable):
 
     status = traitlets.UseEnum(Status, default_value=Status.dead)
     running = traitlets.Bool(default_value=False)
-    
+
     # config
     period = traitlets.Float(default_value=0.5).tag(config=True)
 

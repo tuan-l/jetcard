@@ -13,7 +13,7 @@ def platform_notebooks_dir():
         return os.path.join(notebooks_dir(), 'robot')
     else:
         return os.path.join(notebooks_dir(), 'host')
-    
+
 
 def platform_model_str():
     with open('/proc/device-tree/model', 'r') as f:
@@ -41,12 +41,12 @@ def network_interface_state(interface):
     except:
         return 'down' # default to down
 
-        
+
 def power_mode():
     """Gets the Jetson's current power mode
-    
+
     Gets the current power mode as set by the tool ``nvpmodel``.
-    
+
     Returns:
         str: The current power mode.  Either 'MAXN' or '5W'.
     """
@@ -55,17 +55,17 @@ def power_mode():
 
 def power_usage():
     """Gets the Jetson's current power usage in Watts
-    
+
     Returns:
         float: The current power usage in Watts.
     """
     with open("/sys/devices/50000000.host1x/546c0000.i2c/i2c-6/6-0040/iio:device0/in_power0_input", 'r') as f:
         return float(f.read()) / 1000.0
 
-    
+
 def cpu_usage():
     """Gets the Jetson's current CPU usage fraction
-    
+
     Returns:
         float: The current CPU usage fraction.
     """
@@ -74,17 +74,17 @@ def cpu_usage():
 
 def gpu_usage():
     """Gets the Jetson's current GPU usage fraction
-    
+
     Returns:
         float: The current GPU usage fraction.
     """
     with open('/sys/devices/gpu.0/load', 'r') as f:
         return float(f.read().strip('\n')) / 1000.0
 
-    
+
 def memory_usage():
     """Gets the Jetson's current RAM memory usage fraction
-    
+
     Returns:
         float: The current RAM usage fraction.
     """
@@ -93,7 +93,7 @@ def memory_usage():
 
 def disk_usage():
     """Gets the Jetson's current disk memory usage fraction
-    
+
     Returns:
         float: The current disk usage fraction.
     """
